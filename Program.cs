@@ -86,6 +86,7 @@ static class Program
         var client = new CertificateClient(new Uri(kvUri), new DefaultAzureCredential());
 
         KeyVaultCertificateWithPolicy certificate = await client.GetCertificateAsync(certificateName);
+
         var secretClient = new SecretClient(new Uri(kvUri), new DefaultAzureCredential());
         
         KeyVaultSecret secret =await secretClient.GetSecretAsync(certificate.SecretId.Segments[2]+certificate.SecretId.Segments[3]);
